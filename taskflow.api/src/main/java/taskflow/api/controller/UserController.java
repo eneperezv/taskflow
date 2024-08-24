@@ -39,7 +39,7 @@ import taskflow.api.entity.User;
 import taskflow.api.repository.UserRepository;
 
 @RestController
-@RequestMapping("/api/bookmaster")
+@RequestMapping("/api/taskflow")
 public class UserController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
