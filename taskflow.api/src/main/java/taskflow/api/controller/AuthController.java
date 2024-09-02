@@ -41,7 +41,7 @@ import taskflow.api.webtoken.JwtService;
 import taskflow.api.webtoken.LoginForm;
 
 @RestController
-@RequestMapping("/api/taskflow")
+@RequestMapping("/api/v1/taskflow")
 public class AuthController {
 	
 private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
@@ -58,12 +58,17 @@ private static final Logger logger = LoggerFactory.getLogger(AuthController.clas
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 loginForm.username(), loginForm.password()
         ));
-        if (authentication.isAuthenticated()) {
-            return convertObjectToJson(new Token(jwtService.generateToken(userDetailService.loadUserByUsername(loginForm.username()))));
-        } else {
-        	return convertObjectToJson(new ErrorDetails(new Date(),HttpStatus.UNAUTHORIZED.toString(),"Credenciales no autorizadas"));
-            //throw new UsernameNotFoundException("Invalid credentials");
+        try {
+        	if (authentication.isAuthenticated()) {
+                return convertObjectToJson(new Token(jwtService.generateToken(userDetailService.loadUserByUsername(loginForm.username()))));
+            } else {
+            	return convertObjectToJson(new ErrorDetails(new Date(),HttpStatus.UNAUTHORIZED.toString(),"Credenciales no autorizadas"));
+                //throw new UsernameNotFoundException("Invalid credentials");
+            }
+        }catch(Exception e) {
+        	System.out.println("ERROR-->"+e.getMessage()+"<--");
         }
+		return null;
     }
 	
 	private String convertObjectToJson(Object object) {
