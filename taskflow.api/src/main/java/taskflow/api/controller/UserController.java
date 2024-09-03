@@ -21,8 +21,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,21 +35,25 @@ import org.springframework.web.bind.annotation.RestController;
 import taskflow.api.entity.ErrorDetails;
 import taskflow.api.entity.User;
 import taskflow.api.repository.UserRepository;
+import taskflow.api.service.UserService;
 
 @RestController
 @RequestMapping("/api/v1/taskflow")
 public class UserController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	//@Autowired
+	//UserRepository userRepository;
 	
 	@Autowired
-	UserRepository userRepository;
+	UserService userService;
 	
 	@GetMapping("/user/todos")
 	public ResponseEntity<?> getUsuarios(){
+		//System.out.println("ENTRO EN CONTROLLER");
 		List<User> lista = new ArrayList<User>();
 		try{
-			userRepository.findAll().forEach(lista::add);
+			userService.findAll().forEach(lista::add);
+			//userRepository.findAll().forEach(lista::add);
 			if(lista.isEmpty()) {
 				ErrorDetails err = new ErrorDetails(new Date(),HttpStatus.NO_CONTENT.toString(),"NO CONTENT");
 				return new ResponseEntity<>(err,HttpStatus.NO_CONTENT);
@@ -67,10 +69,9 @@ public class UserController {
 	public ResponseEntity<?> getUsuarioByName(@PathVariable("usuario") String usuario){
 		User result;
 		try{
-			result = userRepository.findByUsuario(usuario);
+			result = userService.findByUsuario(usuario);
 			if(result == null) {
 				ErrorDetails err = new ErrorDetails(new Date(),HttpStatus.NOT_FOUND.toString(),"Usuario <"+usuario+"> no existe");
-				logger.error(err.toString());
 				return new ResponseEntity<ErrorDetails>(err,HttpStatus.NOT_FOUND);
 			}
 			return new ResponseEntity<User>(result, HttpStatus.OK);
@@ -84,10 +85,9 @@ public class UserController {
 	public ResponseEntity<?> createUsuario(@RequestBody User user){
 		User savedUser;
 		try{
-			savedUser = userRepository.save(user);
+			savedUser = userService.save(user);
 			if(savedUser == null) {
 				ErrorDetails err = new ErrorDetails(new Date(),HttpStatus.NOT_FOUND.toString(),"Usuario <"+user+"> no existe");
-				logger.error(err.toString());
 				return new ResponseEntity<ErrorDetails>(err,HttpStatus.NOT_FOUND);
 			}
 			return new ResponseEntity<User>(savedUser, HttpStatus.CREATED);
@@ -100,18 +100,16 @@ public class UserController {
 	@PutMapping("/user/update")
 	public ResponseEntity<?> updateUsuario(@RequestBody User user) {
 	    try {
-	    	User result = userRepository.findByUsuario(user.getUsername());
+	    	User result = userService.findByUsuario(user.getUsername());
 	        if (result == null) {
 	            ErrorDetails err = new ErrorDetails(new Date(), HttpStatus.NOT_FOUND.toString(), "Usuario <" + user.getUsername() + "> no existe");
-	            logger.error(err.toString());
 	            return new ResponseEntity<>(err, HttpStatus.NOT_FOUND);
 	        }
 	        result.setPassword(user.getPassword());
 
-	        User savedUser = userRepository.save(user);
+	        User savedUser = userService.save(user);
 	        if(savedUser == null) {
 				ErrorDetails err = new ErrorDetails(new Date(),HttpStatus.NOT_FOUND.toString(),"Usuario <"+user+"> no existe");
-				logger.error(err.toString());
 				return new ResponseEntity<ErrorDetails>(err,HttpStatus.NOT_FOUND);
 			}
 			return new ResponseEntity<User>(savedUser, HttpStatus.OK);

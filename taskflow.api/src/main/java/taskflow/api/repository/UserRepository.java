@@ -28,7 +28,7 @@ import taskflow.api.entity.User;
 public interface UserRepository extends JpaRepository<User,Long> {
 	
 	Optional<User> findByUsername(String username);
-	
+
 	List<User> findAll();
 	
 	@Query(value = "SELECT * FROM dbo_users u WHERE u.username = :usuario", nativeQuery = true)
