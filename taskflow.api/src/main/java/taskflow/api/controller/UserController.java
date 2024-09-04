@@ -44,7 +44,7 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
-	@GetMapping("/user/todos")
+	@GetMapping("/user/all")
 	public ResponseEntity<?> getUsuarios(){
 		List<User> lista = new ArrayList<User>();
 		try{

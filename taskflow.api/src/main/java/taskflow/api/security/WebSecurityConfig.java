@@ -62,10 +62,14 @@ public class WebSecurityConfig {
                     registry.requestMatchers("/swagger-ui/**").permitAll();
                     registry.requestMatchers("/v3/api-docs/**").permitAll();
                     registry.requestMatchers(HttpMethod.POST, "/api/v1/taskflow/auth").permitAll();
-                    registry.requestMatchers(HttpMethod.GET, "/api/v1/taskflow/user/todos").hasRole("USER");
-                    registry.requestMatchers(HttpMethod.GET, "/api/v1/taskflow/user/**").hasRole("USER");
+                    //USER
+                    registry.requestMatchers(HttpMethod.GET,  "/api/v1/taskflow/user/all").hasRole("USER");
+                    registry.requestMatchers(HttpMethod.GET,  "/api/v1/taskflow/user/**").hasRole("USER");
                     registry.requestMatchers(HttpMethod.POST, "/api/v1/taskflow/user/create").hasRole("USER");
-                    registry.requestMatchers(HttpMethod.PUT, "/api/v1/taskflow/user/update").hasRole("USER");
+                    registry.requestMatchers(HttpMethod.PUT,  "/api/v1/taskflow/user/update").hasRole("USER");
+                    //TASK
+                    registry.requestMatchers(HttpMethod.GET,  "/api/v1/taskflow/task").hasRole("USER");
+                    registry.requestMatchers(HttpMethod.POST, "/api/v1/taskflow/task").hasRole("USER");
                     /*
                     registry.requestMatchers(HttpMethod.GET, "/api/taskflow/author/todos").hasRole("USER");
                     registry.requestMatchers(HttpMethod.GET, "/api/taskflow/author/create").hasRole("USER");

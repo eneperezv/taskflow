@@ -17,9 +17,12 @@ package taskflow.api.service;
  * @since 1.0
  */
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import taskflow.api.entity.Task;
 import taskflow.api.repository.TaskRepository;
 
 @Service
@@ -27,5 +30,13 @@ public class TaskService {
 	
 	@Autowired
 	TaskRepository taskRepository;
+
+	public List<Task> findAll() {
+		return taskRepository.findAll();
+	}
+
+	public Task save(Task task) {
+		return taskRepository.save(task);
+	}
 
 }
