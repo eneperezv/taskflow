@@ -10,7 +10,7 @@ package taskflow.api.repository;
  */
 
 /**
- * Repositorio JPA de Usuarios
+ * Interfaz Repository para la gestion de persistencia de Usuarios
  *
  * @author eliezer.navarro
  * @version 1.0 | 22/08/2024

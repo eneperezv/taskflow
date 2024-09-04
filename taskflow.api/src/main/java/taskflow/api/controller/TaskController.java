@@ -1,7 +1,7 @@
 package taskflow.api.controller;
 
 /*
- * @(#)User.java 1.0 03/09/2024
+ * @(#)TaskController.java 1.0 03/09/2024
  * 
  * El código implementado en este formulario esta protegido
  * bajo las leyes internacionales del Derecho de Autor, sin embargo
@@ -17,13 +17,18 @@ package taskflow.api.controller;
  * @since 1.0
  */
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import taskflow.api.service.TaskService;
 
 @RestController
 @RequestMapping("/api/v1/taskflow")
 public class TaskController {
 	
-	
+	@Autowired
+	TaskService taskService;
 
 }

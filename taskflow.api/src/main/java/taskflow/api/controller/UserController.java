@@ -46,11 +46,9 @@ public class UserController {
 	
 	@GetMapping("/user/todos")
 	public ResponseEntity<?> getUsuarios(){
-		//System.out.println("ENTRO EN CONTROLLER");
 		List<User> lista = new ArrayList<User>();
 		try{
 			userService.findAll().forEach(lista::add);
-			//userRepository.findAll().forEach(lista::add);
 			if(lista.isEmpty()) {
 				ErrorDetails err = new ErrorDetails(new Date(),HttpStatus.NO_CONTENT.toString(),"NO CONTENT");
 				return new ResponseEntity<>(err,HttpStatus.NO_CONTENT);
