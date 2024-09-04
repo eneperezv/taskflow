@@ -41,9 +41,6 @@ import taskflow.api.service.UserService;
 @RequestMapping("/api/v1/taskflow")
 public class UserController {
 	
-	//@Autowired
-	//UserRepository userRepository;
-	
 	@Autowired
 	UserService userService;
 	
