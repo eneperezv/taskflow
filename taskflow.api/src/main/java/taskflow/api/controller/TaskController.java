@@ -24,6 +24,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -89,5 +90,23 @@ public class TaskController {
 			return new ResponseEntity<ErrorDetails>(err,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-
+	/*
+	@DeleteMapping("/task")
+	public ResponseEntity<?> taskDelete(@RequestBody Task task){
+		
+	}
+	public ResponseEntity<?> deleteTask(@PathVariable Long id) {
+	    try {
+	        boolean isDeleted = taskService.deleteById(id);
+	        if (!isDeleted) {
+	            ErrorDetails err = new ErrorDetails(new Date(), HttpStatus.NOT_FOUND.toString(), "Task not found.");
+	            return new ResponseEntity<ErrorDetails>(err, HttpStatus.NOT_FOUND);
+	        }
+	        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+	    } catch (Exception e) {
+	        ErrorDetails err = new ErrorDetails(new Date(), HttpStatus.INTERNAL_SERVER_ERROR.toString(), "INTERNAL SERVER ERROR");
+	        return new ResponseEntity<ErrorDetails>(err, HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
+	}
+	*/
 }
