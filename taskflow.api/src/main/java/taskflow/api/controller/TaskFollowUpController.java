@@ -25,12 +25,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import taskflow.api.entity.ErrorDetails;
-import taskflow.api.entity.Task;
 import taskflow.api.entity.TaskFollowUp;
 import taskflow.api.service.TaskFollowUpService;
 
@@ -39,11 +39,11 @@ public class TaskFollowUpController {
 	@Autowired
 	TaskFollowUpService taskFollowUpService;
 	
-	@GetMapping("/task/followup")
-	public ResponseEntity<?> taskGUGetAll(@RequestBody Task task){
+	@GetMapping("/task/followup/{idtask}")
+	public ResponseEntity<?> taskGUGetAll(@PathVariable("idtask") Long idtask){
 		List<TaskFollowUp> lista = new ArrayList<TaskFollowUp>();
 		try{
-			taskFollowUpService.getAllSeguimientos(task.getId()).forEach(lista::add);
+			taskFollowUpService.getAllSeguimientos(idtask).forEach(lista::add);
 			if(lista.isEmpty()) {
 				ErrorDetails err = new ErrorDetails(new Date(),HttpStatus.NO_CONTENT.toString(),"NO CONTENT");
 				return new ResponseEntity<>(err,HttpStatus.NO_CONTENT);
