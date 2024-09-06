@@ -70,6 +70,8 @@ public class WebSecurityConfig {
                     //TASK
                     registry.requestMatchers(HttpMethod.GET,  "/api/v1/taskflow/task").hasRole("USER");
                     registry.requestMatchers(HttpMethod.POST, "/api/v1/taskflow/task").hasRole("USER");
+                    registry.requestMatchers(HttpMethod.PUT,  "/api/v1/taskflow/task").hasRole("USER");
+                    //TASKFOLLOWUP
                     /*
                     registry.requestMatchers(HttpMethod.GET, "/api/taskflow/author/todos").hasRole("USER");
                     registry.requestMatchers(HttpMethod.GET, "/api/taskflow/author/create").hasRole("USER");
