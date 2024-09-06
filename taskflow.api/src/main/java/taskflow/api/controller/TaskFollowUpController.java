@@ -1,9 +1,5 @@
 package taskflow.api.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 /*
  * @(#)TaskFollowUpController.java 1.0 04/09/2024
  * 
@@ -21,6 +17,10 @@ import java.util.List;
  * @since 1.0
  */
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,11 +29,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import taskflow.api.entity.ErrorDetails;
 import taskflow.api.entity.TaskFollowUp;
 import taskflow.api.service.TaskFollowUpService;
 
+@RestController
+@RequestMapping("/api/v1/taskflow")
 public class TaskFollowUpController {
 	
 	@Autowired

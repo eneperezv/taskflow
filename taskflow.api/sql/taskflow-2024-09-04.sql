@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-09-2024 a las 05:22:10
+-- Tiempo de generación: 05-09-2024 a las 04:34:01
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -60,14 +60,6 @@ CREATE TABLE `dbo_task_followups` (
   `id_task` bigint(20) NOT NULL,
   `id_usuario` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `dbo_task_followups`
---
-
-INSERT INTO `dbo_task_followups` (`id_task_followup`, `date_create`, `description`, `id_task`, `id_usuario`) VALUES
-(1, '2024-09-05', 'Se incluyen implementaciones del controller para seguimiento de tareas', 1, 1),
-(2, '2024-09-05', 'Se inicia proceso de estructuracion del proyecto', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -129,7 +121,7 @@ ALTER TABLE `dbo_tasks`
 -- AUTO_INCREMENT de la tabla `dbo_task_followups`
 --
 ALTER TABLE `dbo_task_followups`
-  MODIFY `id_task_followup` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_task_followup` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `dbo_users`

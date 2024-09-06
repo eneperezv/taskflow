@@ -1,7 +1,5 @@
 package taskflow.api.repository;
 
-import java.util.List;
-
 /*
  * @(#)TaskFollowUpRepository.java 1.0 04/09/2024
  * 
@@ -18,6 +16,8 @@ import java.util.List;
  * @version 1.0 | 04/09/2024
  * @since 1.0
  */
+
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

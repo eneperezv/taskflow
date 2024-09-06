@@ -1,14 +1,5 @@
 package taskflow.api.service;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import taskflow.api.entity.Task;
-import taskflow.api.entity.TaskFollowUp;
-import taskflow.api.repository.TaskFollowUpRepository;
-
 /*
  * @(#)TaskFollowUpService.java 1.0 04/09/2024
  * 
@@ -25,6 +16,15 @@ import taskflow.api.repository.TaskFollowUpRepository;
  * @version 1.0 | 04/09/2024
  * @since 1.0
  */
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import taskflow.api.entity.Task;
+import taskflow.api.entity.TaskFollowUp;
+import taskflow.api.repository.TaskFollowUpRepository;
 
 @Service
 public class TaskFollowUpService {
