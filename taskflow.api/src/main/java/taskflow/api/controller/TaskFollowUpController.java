@@ -26,6 +26,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import taskflow.api.entity.ErrorDetails;
@@ -42,7 +43,7 @@ public class TaskFollowUpController {
 	public ResponseEntity<?> taskGUGetAll(@RequestBody Task task){
 		List<TaskFollowUp> lista = new ArrayList<TaskFollowUp>();
 		try{
-			taskFollowUpService.findAll().forEach(lista::add);
+			taskFollowUpService.getAllSeguimientos(task).forEach(lista::add);
 			if(lista.isEmpty()) {
 				ErrorDetails err = new ErrorDetails(new Date(),HttpStatus.NO_CONTENT.toString(),"NO CONTENT");
 				return new ResponseEntity<>(err,HttpStatus.NO_CONTENT);
@@ -67,6 +68,22 @@ public class TaskFollowUpController {
 		}catch(Exception e){
 			ErrorDetails err = new ErrorDetails(new Date(),HttpStatus.INTERNAL_SERVER_ERROR.toString(),"INTERNAL SERVER ERROR");
 			return new ResponseEntity<ErrorDetails>(err, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@PutMapping("/task/followup")
+	public ResponseEntity<?> taskUpdate(@RequestBody TaskFollowUp taskFollowUp){
+		TaskFollowUp savedTaskFU;
+		try {
+			savedTaskFU = taskFollowUpService.save(taskFollowUp);
+			if(savedTaskFU == null) {
+				ErrorDetails err = new ErrorDetails(new Date(),HttpStatus.NOT_FOUND.toString(),"Task not updated.");
+				return new ResponseEntity<ErrorDetails>(err,HttpStatus.NOT_FOUND);
+			}
+			return new ResponseEntity<TaskFollowUp>(savedTaskFU, HttpStatus.OK);
+		}catch(Exception e) {
+			ErrorDetails err = new ErrorDetails(new Date(), HttpStatus.INTERNAL_SERVER_ERROR.toString(),"INTERNAL SERVER ERROR");
+			return new ResponseEntity<ErrorDetails>(err,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 

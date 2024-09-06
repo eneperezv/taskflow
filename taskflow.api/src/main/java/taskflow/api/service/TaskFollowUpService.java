@@ -1,5 +1,14 @@
 package taskflow.api.service;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import taskflow.api.entity.Task;
+import taskflow.api.entity.TaskFollowUp;
+import taskflow.api.repository.TaskFollowUpRepository;
+
 /*
  * @(#)TaskFollowUpService.java 1.0 04/09/2024
  * 
@@ -17,6 +26,20 @@ package taskflow.api.service;
  * @since 1.0
  */
 
+@Service
 public class TaskFollowUpService {
+	
+	@Autowired
+	TaskFollowUpRepository taskFollowUpRepository;
+
+	public List<TaskFollowUp> getAllSeguimientos(Task task) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public TaskFollowUp save(TaskFollowUp taskFollowUp) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
