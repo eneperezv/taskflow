@@ -43,7 +43,7 @@ public class TaskFollowUpController {
 	public ResponseEntity<?> taskGUGetAll(@RequestBody Task task){
 		List<TaskFollowUp> lista = new ArrayList<TaskFollowUp>();
 		try{
-			taskFollowUpService.getAllSeguimientos(task).forEach(lista::add);
+			taskFollowUpService.getAllSeguimientos(task.getId()).forEach(lista::add);
 			if(lista.isEmpty()) {
 				ErrorDetails err = new ErrorDetails(new Date(),HttpStatus.NO_CONTENT.toString(),"NO CONTENT");
 				return new ResponseEntity<>(err,HttpStatus.NO_CONTENT);

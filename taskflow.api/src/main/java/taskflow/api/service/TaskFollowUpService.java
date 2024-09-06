@@ -32,14 +32,12 @@ public class TaskFollowUpService {
 	@Autowired
 	TaskFollowUpRepository taskFollowUpRepository;
 
-	public List<TaskFollowUp> getAllSeguimientos(Task task) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<TaskFollowUp> getAllSeguimientos(Long idtask) {
+		return taskFollowUpRepository.getAllSeguimientos(idtask);
 	}
 
 	public TaskFollowUp save(TaskFollowUp taskFollowUp) {
-		// TODO Auto-generated method stub
-		return null;
+		return taskFollowUpRepository.save(taskFollowUp);
 	}
 
 }

@@ -1,5 +1,7 @@
 package taskflow.api.repository;
 
+import java.util.List;
+
 /*
  * @(#)TaskFollowUpRepository.java 1.0 04/09/2024
  * 
@@ -18,9 +20,13 @@ package taskflow.api.repository;
  */
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import taskflow.api.entity.TaskFollowUp;
 
 public interface TaskFollowUpRepository extends JpaRepository<TaskFollowUp,Long> {
+	
+	@Query(value = "SELECT a.* FROM dbo_task_followups a WHERE a.id_task = :idtask", nativeQuery = true)
+	List<TaskFollowUp> getAllSeguimientos(Long idtask);
 
 }
