@@ -90,23 +90,5 @@ public class TaskController {
 			return new ResponseEntity<ErrorDetails>(err,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	/*
-	@DeleteMapping("/task")
-	public ResponseEntity<?> taskDelete(@RequestBody Task task){
-		
-	}
-	public ResponseEntity<?> deleteTask(@PathVariable Long id) {
-	    try {
-	        boolean isDeleted = taskService.deleteById(id);
-	        if (!isDeleted) {
-	            ErrorDetails err = new ErrorDetails(new Date(), HttpStatus.NOT_FOUND.toString(), "Task not found.");
-	            return new ResponseEntity<ErrorDetails>(err, HttpStatus.NOT_FOUND);
-	        }
-	        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-	    } catch (Exception e) {
-	        ErrorDetails err = new ErrorDetails(new Date(), HttpStatus.INTERNAL_SERVER_ERROR.toString(), "INTERNAL SERVER ERROR");
-	        return new ResponseEntity<ErrorDetails>(err, HttpStatus.INTERNAL_SERVER_ERROR);
-	    }
-	}
-	*/
+
 }
