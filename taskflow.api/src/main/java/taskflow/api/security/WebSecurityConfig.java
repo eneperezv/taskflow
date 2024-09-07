@@ -75,16 +75,7 @@ public class WebSecurityConfig {
                     registry.requestMatchers(HttpMethod.GET,  "/api/v1/taskflow/task/followup/**").hasRole("USER");
                     registry.requestMatchers(HttpMethod.POST, "/api/v1/taskflow/task/followup").hasRole("USER");
                     registry.requestMatchers(HttpMethod.PUT,  "/api/v1/taskflow/task/followup").hasRole("USER");
-                    /*
-                    registry.requestMatchers(HttpMethod.GET, "/api/taskflow/author/todos").hasRole("USER");
-                    registry.requestMatchers(HttpMethod.GET, "/api/taskflow/author/create").hasRole("USER");
-                    registry.requestMatchers(HttpMethod.GET, "/api/taskflow/book/todos").hasRole("USER");
-                    registry.requestMatchers(HttpMethod.POST, "/api/taskflow/book/create").hasRole("USER");
-                    registry.requestMatchers(HttpMethod.GET, "/api/taskflow/publisher/todos").hasRole("USER");
-                    registry.requestMatchers(HttpMethod.GET, "/api/taskflow/publisher/create").hasRole("USER");
-                    registry.requestMatchers(HttpMethod.GET, "/api/taskflow/client/todos").hasRole("USER");
-                    registry.requestMatchers(HttpMethod.POST, "/api/taskflow/client/create").hasRole("USER");
-                    */
+                    
                     registry.anyRequest().authenticated();
                 })
                 .formLogin(login -> login

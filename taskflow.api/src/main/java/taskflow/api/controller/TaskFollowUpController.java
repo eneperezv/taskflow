@@ -60,7 +60,8 @@ public class TaskFollowUpController {
 	}
 	
 	@PostMapping("/task/followup")
-	public ResponseEntity<?> taskFollowUpCreate(TaskFollowUp taskFollowUp){
+	public ResponseEntity<?> taskFollowUpCreate(@RequestBody TaskFollowUp taskFollowUp){
+		//System.out.println(taskFollowUp.toString());
 		TaskFollowUp savedTaskFU;
 		try{
 			savedTaskFU = taskFollowUpService.save(taskFollowUp);
@@ -70,7 +71,8 @@ public class TaskFollowUpController {
 			}
 			return new ResponseEntity<TaskFollowUp>(savedTaskFU, HttpStatus.CREATED);
 		}catch(Exception e){
-			ErrorDetails err = new ErrorDetails(new Date(),HttpStatus.INTERNAL_SERVER_ERROR.toString(),"INTERNAL SERVER ERROR");
+			e.printStackTrace();
+			ErrorDetails err = new ErrorDetails(new Date(),HttpStatus.INTERNAL_SERVER_ERROR.toString(),"INTERNAL SERVER ERROR("+e.getMessage()+")");
 			return new ResponseEntity<ErrorDetails>(err, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
