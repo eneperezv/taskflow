@@ -55,7 +55,6 @@ Taskflow es una API REST que permite gestionar tareas y sus respectivos seguimie
 | Método | Endpoint                                  | Descripción                            |
 |--------|-------------------------------------------|----------------------------------------|
 | POST   | `/api/v1/taskflow/auth`                   | Autenticacion para crear TOKEN         |
-| GET    | `/api/v1/taskflow/user/all`               | Consultar todos los usuarios           |
 | GET    | `/api/v1/taskflow/user/{usuario}`         | Consultar usuario                      |
 | POST   | `/api/v1/taskflow/user/create`            | Crear nuevo usuario                    |
 | PUT    | `/api/v1/taskflow/user/update`            | Actualizar datos de usuario            |
