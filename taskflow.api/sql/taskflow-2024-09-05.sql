@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-09-2024 a las 04:32:18
+-- Tiempo de generación: 06-09-2024 a las 05:22:10
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -67,8 +67,7 @@ CREATE TABLE `dbo_task_followups` (
 
 INSERT INTO `dbo_task_followups` (`id_task_followup`, `date_create`, `description`, `id_task`, `id_usuario`) VALUES
 (1, '2024-09-05', 'Se incluyen implementaciones del controller para seguimiento de tareas', 1, 1),
-(2, '2024-09-05', 'Se inicia proceso de estructuracion del proyecto', 2, 1),
-(3, '2024-09-06', 'Se realizan pruebas de funcionamiento de los endpoints', 1, 1);
+(2, '2024-09-05', 'Se inicia proceso de estructuracion del proyecto', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -130,7 +129,7 @@ ALTER TABLE `dbo_tasks`
 -- AUTO_INCREMENT de la tabla `dbo_task_followups`
 --
 ALTER TABLE `dbo_task_followups`
-  MODIFY `id_task_followup` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_task_followup` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `dbo_users`

@@ -61,7 +61,6 @@ public class TaskFollowUpController {
 	
 	@PostMapping("/task/followup")
 	public ResponseEntity<?> taskFollowUpCreate(@RequestBody TaskFollowUp taskFollowUp){
-		//System.out.println(taskFollowUp.toString());
 		TaskFollowUp savedTaskFU;
 		try{
 			savedTaskFU = taskFollowUpService.save(taskFollowUp);
